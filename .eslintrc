@@ -1,0 +1,28 @@
+{
+  "extends": "eslint:recommended",
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "sourceType": "module",
+    "allowImportExportEverywhere": false
+  },
+  "rules": {
+    "arrow-parens": ["error", "as-needed"],
+    "comma-dangle": ["error", "always-multiline"],
+    "comma-style": ["error", "last"],
+    "eqeqeq": ["error", "always", {"null": "ignore"}],
+    "guard-for-in": "error",
+    "no-control-regex": "off",
+    "no-duplicate-imports": "error",
+    "no-extra-parens": "error",
+    "no-lone-blocks": "error",
+    "no-trailing-spaces": "error",
+    "no-var": "error",
+    "no-void": "error",
+    "no-with": "error",
+    "prefer-const": "error",
+    "prefer-spread": "error",
+    "quotes": ["error", "single", {"avoidEscape": true, "allowTemplateLiterals": true}],
+    "semi": ["error", "never"],
+    "yield-star-spacing": ["error", "after"]
+  }
+}

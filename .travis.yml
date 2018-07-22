@@ -1,0 +1,8 @@
+language: node_js
+
+node_js:
+  - node
+
+script:
+  - phpenv local 7.1
+  - npm test
