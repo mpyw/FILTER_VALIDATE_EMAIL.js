@@ -11,18 +11,9 @@ export function validateUnicodeEmail(input) {
 }
 export default validateEmail
 
-const validate = (regexp, input) => {
-  if (typeof input !== 'string') {
-    return false
-  }
-  if (input.length > 640) {
-    return false
-  }
-  if (input.slice(-1) === '\n') {
-    return false
-  }
-  if (encodeURIComponent(input).replace(/%../g, 'x').length > 320) {
-    return false
-  }
-  return regexp.test(input)
-}
+const validate = (regexp, input) =>
+  typeof input === 'string'
+      && input.length <= 320
+      && regexp.test(input)
+      && input.slice(-1) !== '\n'
+      && encodeURIComponent(input).replace(/%../g, 'x').length <= 320
