@@ -1,4 +1,4 @@
-# FILTER_VALIDATE_EMAIL.js [![npm version](https://badge.fury.io/js/FILTER_VALIDATE_EMAIL.js.svg)](https://badge.fury.io/js/FILTER_VALIDATE_EMAIL.js) [![Build Status](https://travis-ci.com/mpyw/FILTER_VALIDATE_EMAIL.js.svg?branch=master)](https://travis-ci.com/mpyw/FILTER_VALIDATE_EMAIL.js)
+# FILTER_VALIDATE_EMAIL.js [![npm version](https://badge.fury.io/js/filter-validate-email.svg)](https://badge.fury.io/js/FILTER_VALIDATE_EMAIL.js) [![Build Status](https://travis-ci.com/mpyw/FILTER_VALIDATE_EMAIL.js.svg?branch=master)](https://travis-ci.com/mpyw/FILTER_VALIDATE_EMAIL.js)
 
 Email validation compatible with PHP's `filter_var($value, FILTER_VALIDATE_EMAIL)`
 
