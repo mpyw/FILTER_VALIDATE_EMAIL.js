@@ -1,6 +1,7 @@
 node_modules/
-es/
 lib/
+es/
+dist/
 *.log
 package-lock.json
 yarn.lock
