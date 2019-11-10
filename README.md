@@ -5,7 +5,7 @@ Email validation compatible with PHP's `filter_var($value, FILTER_VALIDATE_EMAIL
 # Installing
 
 ```
-npm install filter-validate-email --save
+npm install filter-validate-email
 ```
 
 # Usage
