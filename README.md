@@ -16,7 +16,7 @@ npm install filter-validate-email
 <script src="https://unpkg.com/filter-validate-email@latest/dist/filter-validate-email.min.js"></script>
 ```
 
-It is strongly recommended that you replace `latest` into a fixed version.
+It is strongly recommended that you replace `latest` with a fixed version.
 
 # Usage
 
