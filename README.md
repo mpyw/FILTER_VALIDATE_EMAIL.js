@@ -4,8 +4,16 @@ Email validation compatible with PHP's `filter_var($value, FILTER_VALIDATE_EMAIL
 
 # Installing
 
+## NPM
+
 ```
 npm install filter-validate-email
+```
+
+## CDN
+
+```html
+<script src="https://unpkg.com/filter-validate-email@latest/dist/filter-validate-email.min.js"></script>
 ```
 
 # Usage
