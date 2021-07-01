@@ -1,7 +1,9 @@
-node_modules/
-lib/
-es/
-dist/
+/node_modules/
+/lib/
+/es/
+/typings/
+/dist/
+/coverage/
 *.log
 package-lock.json
 yarn.lock

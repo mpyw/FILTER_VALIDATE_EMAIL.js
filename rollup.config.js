@@ -1,27 +1,31 @@
-import nodeResolve from 'rollup-plugin-node-resolve'
-import babel from 'rollup-plugin-babel'
-import { uglify } from 'rollup-plugin-uglify'
+import nodeResolve from '@rollup/plugin-node-resolve'
+import babel from '@rollup/plugin-babel'
+import { terser } from 'rollup-plugin-terser'
 
-const env = process.env.NODE_ENV
+const isProd = process.env.NODE_ENV === "production";
+
 const config = {
-  input: 'src/index.js',
+  input: "src/index.ts",
   output: {
-    format: 'umd',
+    format: "umd",
     name: 'FilterValidateEmail',
-    indent: env === 'development',
+    sourcemap: true,
+    compact: isProd,
+    indent: !isProd,
+    exports: "named",
+    file: `dist/filter-validate-email.${isProd ? "min.js" : "js"}`,
   },
   plugins: [
-    nodeResolve(),
-    babel({
-      exclude: 'node_modules/**',
+    nodeResolve({
+      extensions: [".ts"],
     }),
+    babel({
+      include: ["src/**/*"],
+      exclude: "node_modules/**",
+      extensions: [".ts"],
+    }),
+    isProd && terser(),
   ],
-}
-
-if (env === 'production') {
-  config.plugins.push(
-    uglify(),
-  )
 }
 
 export default config
