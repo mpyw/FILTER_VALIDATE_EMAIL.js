@@ -1,17 +1,18 @@
 import { regexpAsciiEmail, regexpUnicodeEmail } from './regexp';
 
-export const validateEmail = (input: unknown, unicode = true): boolean => {
+export const validateEmail = (input: string, unicode = true): boolean => {
   return (unicode ? validateUnicodeEmail : validateAsciiEmail)(input);
 };
-export const validateAsciiEmail = (input: unknown): boolean => {
+export const validateAsciiEmail = (input: string): boolean => {
   return validate(regexpAsciiEmail, input);
 };
-export const validateUnicodeEmail = (input: unknown): boolean => {
+export const validateUnicodeEmail = (input: string): boolean => {
   return validate(regexpUnicodeEmail, input);
 };
 export default validateEmail;
 
-const validate = (regexp: RegExp, input: unknown): boolean =>
+// noinspection SuspiciousTypeOfGuard
+const validate = (regexp: RegExp, input: string): boolean =>
   typeof input === 'string' &&
   input.length <= 320 &&
   regexp.test(input) &&
