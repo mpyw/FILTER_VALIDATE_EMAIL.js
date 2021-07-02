@@ -1,1 +1,2 @@
 test/**/*.php linguist-vendored
+*.config.js linguist-vendored
