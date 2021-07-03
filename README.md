@@ -62,4 +62,4 @@ const result = validateEmail(value, false)
 
 # Appendix
 
-- Pure HTML Version: [mpyw/FILTER_VALIDATE_EMAIL.html](https://github.com/mpyw/FILTER_VALIDATE_EMAIL.html)
+- Pure HTML Version: [`mpyw/FILTER_VALIDATE_EMAIL.html`](https://github.com/mpyw/FILTER_VALIDATE_EMAIL.html)
