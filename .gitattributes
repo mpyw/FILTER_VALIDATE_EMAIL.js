@@ -1,2 +1,3 @@
 test/**/*.php linguist-vendored
+tools/**/*.php linguist-vendored
 *.config.js linguist-vendored
