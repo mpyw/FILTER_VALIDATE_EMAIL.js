@@ -17,6 +17,10 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
 
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+
       - name: Install Packages
         run: npm install
 
@@ -42,6 +46,7 @@ jobs:
 
   coverage-aggregation:
     needs: build
+    if: always()
     runs-on: ubuntu-latest
     steps:
       - name: Aggregate Coverage

@@ -18,6 +18,8 @@ export default tseslint.config(
     },
   },
   {
+    // the PHP-derived regexes intentionally contain control characters
+    files: ['src/regexp/**/*.ts'],
     rules: {
       'no-control-regex': 'off',
     },

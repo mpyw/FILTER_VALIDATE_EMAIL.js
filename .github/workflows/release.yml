@@ -13,6 +13,9 @@ jobs:
         with:
           node-version: '24.x'
           registry-url: 'https://registry.npmjs.org'
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
       - run: npm install
       - run: npm publish
         env:

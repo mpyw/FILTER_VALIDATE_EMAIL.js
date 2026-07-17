@@ -7,7 +7,8 @@
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
-    }
+    },
+    "./package.json": "./package.json"
   },
   "types": "./dist/index.d.ts",
   "module": "./dist/index.js",
@@ -27,6 +28,7 @@
     "fix:eslint": "eslint . --fix",
     "fix:prettier": "prettier . --write",
     "fix": "npm run fix:eslint && npm run fix:prettier",
+    "prebuild": "node -e \"require('node:fs').rmSync('dist',{recursive:true,force:true})\"",
     "build": "tsup",
     "test": "npm run test:php && npm run test:ts",
     "test:coverage": "npm run test:php && npm run test:ts:coverage",
