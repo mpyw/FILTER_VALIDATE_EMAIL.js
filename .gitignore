@@ -1,7 +1,4 @@
 /node_modules/
-/lib/
-/es/
-/typings/
 /dist/
 /coverage/
 *.log

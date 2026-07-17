@@ -1,3 +1,4 @@
+import { test, expect } from 'vitest';
 import validate from '../src';
 import emails from './emails';
 

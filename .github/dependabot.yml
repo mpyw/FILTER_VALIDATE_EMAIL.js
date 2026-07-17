@@ -8,8 +8,8 @@ updates:
       default-days: 7
     groups:
       npm-minor:
-        patterns: ["*"]
-        update-types: ["minor", "patch"]
+        patterns: ['*']
+        update-types: ['minor', 'patch']
   - package-ecosystem: github-actions
     directory: /
     schedule:
@@ -18,5 +18,5 @@ updates:
       default-days: 7
     groups:
       actions-minor:
-        patterns: ["*"]
-        update-types: ["minor", "patch"]
+        patterns: ['*']
+        update-types: ['minor', 'patch']

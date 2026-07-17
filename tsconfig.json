@@ -1,12 +1,11 @@
 {
   "compilerOptions": {
     "target": "esnext",
-    "module": "commonjs",
-    "lib": [],
-    "sourceRoot": "src/",
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "lib": ["esnext"],
     "declaration": true,
     "sourceMap": true,
-    "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "strict": true,
@@ -14,12 +13,9 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noImplicitReturns": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "noEmit": true
   },
-  "exclude": [
-    "node_modules"
-  ],
-  "include": [
-    "src/**/*.ts"
-  ]
+  "include": ["src/**/*.ts", "test/**/*.ts"]
 }
