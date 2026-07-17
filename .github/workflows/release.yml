@@ -1,11 +1,10 @@
 name: Node.js Package
 
 on:
-  release:
-    types: [created]
+  workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write # for creating the tag and GitHub Release
   id-token: write # required for npm Trusted Publishing (OIDC) + provenance
 
 jobs:
@@ -24,5 +23,13 @@ jobs:
       # setup-node bundles an older npm; Trusted Publishing needs npm >= 11.5.1
       - run: npm install -g npm@latest
       - run: npm ci
-      # No NODE_AUTH_TOKEN: auth comes from the OIDC token via Trusted Publishing.
+      # 1. Publish the canonical artifact first (no NODE_AUTH_TOKEN: OIDC).
+      #    prepublishOnly runs checks/tests/build before the irreversible publish.
       - run: npm publish
+      # 2. Only after a successful publish, create the tag and GitHub Release
+      - name: Create tag and GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          VERSION="v$(node -p "require('./package.json').version")"
+          gh release create "$VERSION" --target "$GITHUB_SHA" --generate-notes
