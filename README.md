@@ -8,9 +8,9 @@ Email validation compatible with PHP's `filter_var($value, FILTER_VALIDATE_EMAIL
 > - **ESM package** — there is no separate CommonJS build. `import` works everywhere; `require()` works on Node.js >= 22.12 via native `require(ESM)`.
 > - **Node.js >= 22** required.
 > - Only the package root is exported; deep imports (e.g. `filter-validate-email/es/...`) are no longer available.
-> - The browser bundle is the minified IIFE at `dist/filter-validate-email.min.js` (unminified/UMD/AMD builds were dropped).
+> - In the browser, load it as an ES module from a CDN (`<script type="module">`, see below); there is no bundled browser global / UMD / IIFE build.
 >
-> If you need a real CommonJS build or older runtimes, stay on [v1](https://www.npmjs.com/package/filter-validate-email/v/1.1.3).
+> If you need a real CommonJS build, a browser global, or older runtimes, stay on [v1](https://www.npmjs.com/package/filter-validate-email/v/1.1.3).
 
 # Installing
 
@@ -22,15 +22,19 @@ npm install filter-validate-email
 
 ## CDN
 
+Load it as an ES module from any npm CDN:
+
 ```html
-<script src="https://unpkg.com/filter-validate-email@latest/dist/filter-validate-email.min.js"></script>
-<script>
-  // exposed as the global `FilterValidateEmail`
-  FilterValidateEmail.default('...');
+<script type="module">
+  import validateEmail from 'https://esm.sh/filter-validate-email';
+
+  validateEmail('...'); // true / false
 </script>
 ```
 
-It is strongly recommended that you replace `latest` with a fixed version.
+jsDelivr (`https://cdn.jsdelivr.net/npm/filter-validate-email/+esm`) and unpkg (`https://unpkg.com/filter-validate-email?module`) work too.
+
+It is strongly recommended that you pin a fixed version, e.g. `https://esm.sh/filter-validate-email@2.0.0`.
 
 # Usage
 
