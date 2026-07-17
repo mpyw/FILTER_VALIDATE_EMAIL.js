@@ -8,7 +8,7 @@ jobs:
 
     strategy:
       matrix:
-        node: [24, 22, 20, 18, 16, 14, 12]
+        node: [26, 24, 22]
 
     steps:
       - uses: actions/checkout@v7
@@ -17,8 +17,15 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
 
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+
       - name: Install Packages
         run: npm install
+
+      - name: Typecheck
+        run: npm run check
 
       - name: Lint
         run: npm run lint
@@ -26,15 +33,20 @@ jobs:
       - name: Test
         run: npm run test:coverage
 
+      - name: Build
+        run: npm run build
+
       - name: Coveralls Parallel
         uses: coverallsapp/github-action@v2
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
+          file: ./coverage/lcov.info
           flag-name: node:${{ matrix.node }}
           parallel: true
 
   coverage-aggregation:
     needs: build
+    if: always()
     runs-on: ubuntu-latest
     steps:
       - name: Aggregate Coverage

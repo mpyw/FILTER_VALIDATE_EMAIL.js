@@ -1,30 +1,42 @@
 {
   "name": "filter-validate-email",
-  "version": "1.1.3",
-  "main": "lib/index.js",
-  "module": "es/index.js",
-  "types": "typings/index.d.ts",
+  "version": "2.0.0",
+  "type": "module",
   "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "types": "./dist/index.d.ts",
+  "module": "./dist/index.js",
+  "unpkg": "./dist/filter-validate-email.min.js",
+  "jsdelivr": "./dist/filter-validate-email.min.js",
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
     "check": "tsc --noEmit",
-    "lint:eslint": "eslint {src,test}/**/*.ts *.config.js",
-    "lint:prettier": "prettier ./src ./test *.config.js --list-different",
+    "lint:eslint": "eslint .",
+    "lint:prettier": "prettier . --check",
     "lint": "npm run lint:eslint && npm run lint:prettier",
-    "fix:eslint": "eslint {src,test}/**/*.ts *.config.js",
-    "fix:prettier": "prettier ./src ./test *.config.js --write",
+    "fix:eslint": "eslint . --fix",
+    "fix:prettier": "prettier . --write",
     "fix": "npm run fix:eslint && npm run fix:prettier",
-    "build:cjs": "BABEL_ENV=cjs babel src --out-dir lib --extensions .ts",
-    "build:es": "BABEL_ENV=es babel src --out-dir es --extensions .ts",
-    "build:umd": "BABEL_ENV=es NODE_ENV=development rollup -c",
-    "build:umd:min": "BABEL_ENV=es NODE_ENV=production rollup -c",
-    "build:typings": "tsc --outDir typings/ --emitDeclarationOnly",
-    "build": "run-p build:**",
+    "prebuild": "node -e \"require('node:fs').rmSync('dist',{recursive:true,force:true})\"",
+    "build": "tsup",
     "test": "npm run test:php && npm run test:ts",
     "test:coverage": "npm run test:php && npm run test:ts:coverage",
-    "test:ts": "jest",
-    "test:ts:coverage": "jest --coverage",
+    "test:ts": "vitest run",
+    "test:ts:coverage": "vitest run --coverage",
     "test:php": "php test/index.php",
-    "prepublishOnly": "git diff --no-ext-diff --quiet --exit-code src .gitignore package.json README.md LICENSE || (echo \"Please commit changes!\" && false) && npm test && rm -rf lib es dist typings && npm run build"
+    "prepublishOnly": "npm run check && npm run test && npm run build"
   },
   "author": "mpyw",
   "contributors": [
@@ -49,23 +61,15 @@
   },
   "homepage": "https://github.com/mpyw/FILTER_VALIDATE_EMAIL.js#readme",
   "devDependencies": {
-    "@babel/cli": "^7.14.5",
-    "@babel/core": "^7.14.6",
-    "@babel/preset-env": "^7.14.7",
-    "@babel/preset-typescript": "^7.14.5",
-    "@rollup/plugin-babel": "^5.3.0",
-    "@rollup/plugin-node-resolve": "^13.0.0",
-    "@types/jest": "^27.0.0",
-    "@typescript-eslint/eslint-plugin": "^4.28.1",
-    "@typescript-eslint/parser": "^4.28.1",
-    "eslint": "^7.29.0",
-    "eslint-config-prettier": "^8.3.0",
-    "jest": "^27.0.6",
-    "npm-run-all": "^4.1.5",
-    "prettier": "^2.3.2",
-    "rollup": "^2.52.6",
-    "rollup-plugin-terser": "^7.0.2",
-    "ts-jest": "^27.0.3",
-    "typescript": "^4.3.5"
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^26.1.1",
+    "@vitest/coverage-v8": "^4.1.10",
+    "eslint": "^10.7.0",
+    "eslint-config-prettier": "^10.1.8",
+    "prettier": "^3.9.5",
+    "tsup": "^8.5.1",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.64.0",
+    "vitest": "^4.1.10"
   }
 }
